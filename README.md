@@ -65,7 +65,7 @@ Once the outliers were removed we have a much better plot.
 
 Two new features were created and added to the original features_list. The new features were frac_from_poi and frac_to_poi. frac_from_poi is the ratio of the messages that were from the POI to this person verses all the messages sent to this person. The frac_to_poi is the ratio of emails from this person to the POI versus all messages sent from this person. The theory behind these two features was that a POI is more likely to send/recieve more emails to/from other POIs than non-POIs. 
 
-When evaluating the featres I used SelectKBest to select the most powerful features. The scores for each of the features were:
+To evaluate the best features to use I used an automated feature selection function, SelectKBest. SelectKBest identifies the K features that are teh most powerful. The scores returned by SelectKBest are displayed below.
 
 | Feature | Score |
 | :---- | :--- |
@@ -91,7 +91,7 @@ When evaluating the featres I used SelectKBest to select the most powerful featu
 | from_messages | 0.16970094762175533 |
 | restricted_stock_deferred | 0.06549965290994214 |
 
-I chose to only use the top 7 features based on their score above. Then I used min-max scalers to rescale each feature to a common range since the range of raw values veried so widely. 
+I decided to use the top 7 features based on the highest scores from above. Then I used min-max scalers to rescale each feature to a common range since the range of raw values veried so widely. 
 
 Next I examined the effect of my new features by looking at the performance of several algorithms using hte original features and the new features.
 
@@ -126,7 +126,7 @@ The results of the tuning were:
 
 #### 5. What is validation, and what’s a classic mistake you can make if you do it wrong? How did you validate your analysis? 
 
-Validation is a way to assess how a trained model will generalize with a test dataset. The classic mistake is not splitting data into testing and training datasets. Neglecting to do this leads to overfitting. When a model is overfit it performs well on the training data but does not do well with a new dataset. To prevent this from happening with my analysis I created the eval_clf function which uses cross validation to split the data into test and train sets as well as calculate the accuracy, precision, and recall of each iteration and used the mean of each metric. 
+Validation is a way to assess how a trained model will generalize with a test dataset. The classic mistake is not splitting data into testing and training datasets. Neglecting to do this leads to overfitting. When a model is overfit it performs well on the training data but does not do well with a new dataset. To prevent this from happening with my analysis I created the eval_clf function which uses Cross Validation's train_test_split function to split the data into test and train sets as well as calculate the accuracy, precision, and recall of each iteration and used the mean of each metric. The train_test_split fuction was chosen to quickly split the dataset. 
 
 #### 6. Give at least 2 evaluation metrics and your average performance for each of them.  Explain an interpretation of your metrics that says something human-understandable about your algorithm’s performance.
 
