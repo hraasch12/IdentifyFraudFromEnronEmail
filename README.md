@@ -104,4 +104,36 @@ Next I examined the effect of my new features by looking at the performance of s
 
 We see that the performance is a little different between each of the algorithms. The only algorithm that had better performance with the new features was Decision Tree. Naive Bayes, Logistic Regression, and SVM performed better with the original features. 
 
-** 3 What algorithm did you end up using? What other one(s) did you try? How did model performance differ between algorithms?  
+** 3. What algorithm did you end up using? What other one(s) did you try? How did model performance differ between algorithms?  
+
+I used 4 different algorithms and in the end used Naive Bayes as it had the best performance. The other algorithms I evaluated were Decision Tree, Logistic Regression, and SVM. 
+
+The Logistic Regression model and SVM model took significantly longer to run than the other models. 
+
+** 4. What does it mean to tune the parameters of an algorithm, and what can happen if you don’t do this well?  How did you tune the parameters of your particular algorithm? What parameters did you tune? (Some algorithms do not have parameters that you need to tune -- if this is the case for the one you picked, identify and briefly explain how you would have done it for the model that was not your final choice or a different model that does utilize parameter tuning, e.g. a decision tree classifier). 
+
+Typically the parameters used in algorithms need to be optimized to get the algorithm to perform at its best. This process is called Tuning. This is one of the final steps and if not done properly it can lead to data being improperly fitted. 
+
+  For tuning the parameters I used GridSearchCV from sklearn. GridSearch methodically builds and evaluates a model for each combination of parameters specified in a grid. 
+
+The results of the tuning were:
+- Niave Bayes doesn't take any parameters so there was no tuning needed.
+- SVM: kernel = 'rbf', C = 1000, and gamma = 0.01
+- Decision Tree: 
+    Without new features: splitter = 'random', criterion = 'gini'
+    With new features: splitter = 'best', criterion = 'entropy'
+- Logistic Regression: C = 0.1, tol = 1
+
+** 5. What is validation, and what’s a classic mistake you can make if you do it wrong? How did you validate your analysis? 
+
+Validation is a way to assess how a trained model will generalize with a test dataset. The classic mistake is not splitting data into testing and training datasets. Neglecting to do this leads to overfitting. When a model is overfit it performs well on the training data but does not do well with a new dataset. To prevent this from happening with my analysis I created the eval_clf function which uses cross validation to split the data into test and train sets as well as calculate the accuracy, precision, and recall of each iteration and used the mean of each metric. 
+
+** 6. Give at least 2 evaluation metrics and your average performance for each of them.  Explain an interpretation of your metrics that says something human-understandable about your algorithm’s performance.
+
+I evaluated the accuracy, precision, and recall of the Niave Bayes algorithm. The average accuracy was 0.851, precision was 0.445, and recall was 0.3785. 
+
+Accuracy is used to demonstrate how close a measured value is to the actual value. The accuracy value of 0.851 means that the proportion of true results is 0.851 among all cases. 
+
+Precision measures the algorithm's ability to classify the true positives from all examined positives. A precision of 0.445 means that 43 out of the 100 people classified as POIs were actually POIs. 
+
+Recall measures the algorithm's ability to classify the true positives over all actual positives. Therefore, a recall of 0.3785 means that out of the 100 true POIs in the dataset roughly 38 are correctly classified as POIs. 
