@@ -1,0 +1,7 @@
+https://machinelearningmastery.com/how-to-tune-algorithm-parameters-with-scikit-learn/
+https://en.wikipedia.org/wiki/Cross-validation_(statistics)
+http://scikit-learn.org/stable/modules/tree.html
+http://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html
+https://stackoverflow.com/questions/33091376/python-what-is-exactly-sklearn-pipeline-pipeline
+http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
+https://en.wikipedia.org/wiki/Precision_and_recall
