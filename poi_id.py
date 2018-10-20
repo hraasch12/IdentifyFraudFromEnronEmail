@@ -13,6 +13,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score
 from sklearn.grid_search import GridSearchCV
 from numpy import mean
 from sklearn.cross_validation import train_test_split
+from sklearn.cross_validation import StratifiedShuffleSplit
 
 ### Task 1: Select what features you'll use.
 ### features_list is a list of strings, each of which is a feature name.
@@ -63,7 +64,7 @@ for f in missing_values:
     
 ### Task 2: Remove outliers
 
-def displayPlot(data_set, feature_x, feature_y):
+def display_plot(data_set, feature_x, feature_y):
     """
     This function displays a 2d plot of 2 features when given 2 features
     """
@@ -78,10 +79,10 @@ def displayPlot(data_set, feature_x, feature_y):
 	
 # Visualize data to identify outliers
 
-#print(displayPlot(data_dict, 'total_payments', 'total_stock_value'))
-#print(displayPlot(data_dict, 'from_poi_to_this_person', 'from_this_person_to_poi'))
-print(displayPlot(data_dict, 'salary', 'bonus'))
-#print(displayPlot(data_dict, 'total_payments', 'other'))
+#print(display_plot(data_dict, 'total_payments', 'total_stock_value'))
+#print(display_plot(data_dict, 'from_poi_to_this_person', 'from_this_person_to_poi'))
+print(display_plot(data_dict, 'salary', 'bonus'))
+#print(display_plot(data_dict, 'total_payments', 'other'))
 identity = []
 
 for person in data_dict:
@@ -113,7 +114,7 @@ data_dict.pop("TOTAL", 0)
 data_dict.pop("LOCKHART EUGENE E", 0)
 data_dict.pop("THE TRAVEL AGENCY IN THE PARK", 0)
 
-print(displayPlot(data_dict, 'salary', 'bonus'))
+print(display_plot(data_dict, 'salary', 'bonus'))
 
 ### Task 3: Create new feature(s)
 
@@ -122,7 +123,7 @@ print(displayPlot(data_dict, 'salary', 'bonus'))
 my_dataset = data_dict
 
 # create new features
-def calcFraction(poi_messages, all_messages):
+def calc_fraction(poi_messages, all_messages):
     """ 
 	Returns a fraction of messages to/from a person 
 	that are to/from a POI
@@ -133,7 +134,7 @@ def calcFraction(poi_messages, all_messages):
 
     return fraction
 
-def sortSecond(elem):
+def sort_second(elem):
     """ 
 	Sort by second element
     """
@@ -142,13 +143,13 @@ def sortSecond(elem):
 for emp in my_dataset:
     from_poi_to_this_person = my_dataset[emp]['from_poi_to_this_person']
     to_messages = my_dataset[emp]['to_messages']
-    frac_from_poi = calcFraction(from_poi_to_this_person, to_messages)
+    frac_from_poi = calc_fraction(from_poi_to_this_person, to_messages)
     # print frac_from_poi
     my_dataset[emp]['frac_from_poi'] = frac_from_poi
 
     from_this_person_to_poi = my_dataset[emp]['from_this_person_to_poi']
     from_messages = my_dataset[emp]['from_messages']
-    frac_to_poi = calcFraction(from_this_person_to_poi, from_messages)
+    frac_to_poi = calc_fraction(from_this_person_to_poi, from_messages)
     my_dataset[emp]['frac_to_poi'] = frac_to_poi
 
 features_list_n = features_list
@@ -300,9 +301,6 @@ eval_clf(nb_grid_search, new_features, new_labels, nb_param)
 ### function. Because of the small size of the dataset, the script uses
 ### stratified shuffle split cross validation. For more info: 
 ### http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedShuffleSplit.html
-
-features_train, features_test, labels_train, labels_test = \
-    train_test_split(features, labels, test_size=0.3, random_state=42)
 
 from sklearn import naive_bayes
 clf = naive_bayes.GaussianNB()
