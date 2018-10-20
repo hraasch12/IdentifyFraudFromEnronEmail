@@ -97,9 +97,11 @@ Next I examined the effect of my new features by looking at the performance of s
 
 | Algorithm | Accuracy Original | Precision Original | Recall Original | Accuracy New | Precision New | Recall New | 
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Naive Bayes | 0.852619047619 | 0.431829365079 | 0.375834054834 | 0.835714285714 | 0.373023809524 | 0.376445165945 |
-| Decision Tree | 0.812857142857 | 0.29581998557 | 0.29488997114 | 0.812619047619 | 0.299841269841 | 0.310830808081 |
-| Logistic Regression | 0.863333333333 | 0.507341269841 | 0.261941558442 | 0.860714285714 | 0.486965367965 | 0.258267316017 |
-| SVM | 0.865714285714 | 0.154666666667 | 0.0600357142857 | 0.863571428571 | 0.0819285714286 | 0.0375952380952 |
+| Naive Bayes | 0.854761904762 | 0.432977633478 | 0.373191558442 | 0.842619047619 | 0.395617965368 | 0.37384992785 |
+| Decision Tree | 0.802380952381 | 0.246413863914 | 0.270544372294 | 0.812857142857 | 0.290127317127 | 0.284605339105 |
+| Logistic Regression | 0.859761904762 | 0.400333333333 | 0.190000721501 | 0.859285714286 | 0.466736263736 | 0.244305916306 |
+| SVM | 0.866428571429 | 0.141666666667 | 0.0384523809524 | 0.86619047619 | 0.0938333333333 | 0.0442738095238 |
 
 We see that the performance is a little different between each of the algorithms. The only algorithm that had better performance with the new features was Decision Tree. Naive Bayes, Logistic Regression, and SVM performed better with the original features. 
+
+** 3 What algorithm did you end up using? What other one(s) did you try? How did model performance differ between algorithms?  
