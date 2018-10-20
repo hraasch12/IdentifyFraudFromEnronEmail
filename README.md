@@ -61,7 +61,7 @@ Once the outliers were removed we have a much better plot.
 
 ![Plot Without Outlier](https://github.com/hraasch12/IdentifyFraudFromEnronEmail/blob/master/Bonus_Salary_Post_Plot.PNG)
 
-** 2. What features did you end up using in your POI identifier, and what selection process did you use to pick them? Did you have to do any scaling? Why or why not? As part of the assignment, you should attempt to engineer your own feature that does not come ready-made in the dataset -- explain what feature you tried to make, and the rationale behind it. (You do not necessarily have to use it in the final analysis, only engineer and test it.) In your feature selection step, if you used an algorithm like a decision tree, please also give the feature importances of the features that you use, and if you used an automated feature selection function like SelectKBest, please report the feature scores and reasons for your choice of parameter values. 
+**2. What features did you end up using in your POI identifier, and what selection process did you use to pick them? Did you have to do any scaling? Why or why not? As part of the assignment, you should attempt to engineer your own feature that does not come ready-made in the dataset -- explain what feature you tried to make, and the rationale behind it. (You do not necessarily have to use it in the final analysis, only engineer and test it.) In your feature selection step, if you used an algorithm like a decision tree, please also give the feature importances of the features that you use, and if you used an automated feature selection function like SelectKBest, please report the feature scores and reasons for your choice of parameter values. 
 
 Two new features were created and added to the original features_list. The new features were frac_from_poi and frac_to_poi. frac_from_poi is the ratio of the messages that were from the POI to this person verses all the messages sent to this person. The frac_to_poi is the ratio of emails from this person to the POI versus all messages sent from this person. The theory behind these two features was that a POI is more likely to send/recieve more emails to/from other POIs than non-POIs. 
 
@@ -104,13 +104,13 @@ Next I examined the effect of my new features by looking at the performance of s
 
 We see that the performance is a little different between each of the algorithms. The only algorithm that had better performance with the new features was Decision Tree. Naive Bayes, Logistic Regression, and SVM performed better with the original features. 
 
-** 3. What algorithm did you end up using? What other one(s) did you try? How did model performance differ between algorithms?  
+**3. What algorithm did you end up using? What other one(s) did you try? How did model performance differ between algorithms?  
 
 I used 4 different algorithms and in the end used Naive Bayes as it had the best performance. The other algorithms I evaluated were Decision Tree, Logistic Regression, and SVM. 
 
 The Logistic Regression model and SVM model took significantly longer to run than the other models. 
 
-** 4. What does it mean to tune the parameters of an algorithm, and what can happen if you don’t do this well?  How did you tune the parameters of your particular algorithm? What parameters did you tune? (Some algorithms do not have parameters that you need to tune -- if this is the case for the one you picked, identify and briefly explain how you would have done it for the model that was not your final choice or a different model that does utilize parameter tuning, e.g. a decision tree classifier). 
+**4. What does it mean to tune the parameters of an algorithm, and what can happen if you don’t do this well?  How did you tune the parameters of your particular algorithm? What parameters did you tune? (Some algorithms do not have parameters that you need to tune -- if this is the case for the one you picked, identify and briefly explain how you would have done it for the model that was not your final choice or a different model that does utilize parameter tuning, e.g. a decision tree classifier). 
 
 Typically the parameters used in algorithms need to be optimized to get the algorithm to perform at its best. This process is called Tuning. This is one of the final steps and if not done properly it can lead to data being improperly fitted. 
 
@@ -124,11 +124,11 @@ The results of the tuning were:
     With new features: splitter = 'best', criterion = 'entropy'
 - Logistic Regression: C = 0.1, tol = 1
 
-** 5. What is validation, and what’s a classic mistake you can make if you do it wrong? How did you validate your analysis? 
+**5. What is validation, and what’s a classic mistake you can make if you do it wrong? How did you validate your analysis? 
 
 Validation is a way to assess how a trained model will generalize with a test dataset. The classic mistake is not splitting data into testing and training datasets. Neglecting to do this leads to overfitting. When a model is overfit it performs well on the training data but does not do well with a new dataset. To prevent this from happening with my analysis I created the eval_clf function which uses cross validation to split the data into test and train sets as well as calculate the accuracy, precision, and recall of each iteration and used the mean of each metric. 
 
-** 6. Give at least 2 evaluation metrics and your average performance for each of them.  Explain an interpretation of your metrics that says something human-understandable about your algorithm’s performance.
+**6. Give at least 2 evaluation metrics and your average performance for each of them.  Explain an interpretation of your metrics that says something human-understandable about your algorithm’s performance.
 
 I evaluated the accuracy, precision, and recall of the Niave Bayes algorithm. The average accuracy was 0.851, precision was 0.445, and recall was 0.3785. 
 
