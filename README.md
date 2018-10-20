@@ -51,9 +51,9 @@ Some features have missing values.
 
 We can see in the plot of Bonus vs Salary that there is an oulier. This outlier is an error in the Total column and should be removed as it's likely due to a spreadsheet quirk. 
 
-(IdentifyFraudFromEnronEmail/Bonus_Salary_Plot.PNG)
+![Original Plot](https://github.com/hraasch12/IdentifyFraudFromEnronEmail/blob/master/Bonus_Salary_Plot.PNG)
 
 Once the outlier was removed we have a much better plot.
 
-(IdentifyFraudFromEnronEmail/Bonus_Salary_Post_Plot.PNG)
+![Plot Without Outlier](https://github.com/hraasch12/IdentifyFraudFromEnronEmail/blob/master/Bonus_Salary_Post_Plot.PNG)
 
