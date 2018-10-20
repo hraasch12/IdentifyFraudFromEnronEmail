@@ -49,11 +49,15 @@ Some features have missing values.
 
 ## Outliers
 
-We can see in the plot of Bonus vs Salary that there is an oulier. This outlier is an error in the Total column and should be removed as it's likely due to a spreadsheet quirk. 
+We can see in the plot of Bonus vs Salary that there is an oulier. This outlier is representing Total and it should be removed to avoid having it impact our prediction models. 
+
+I also noticed that there was an agency included in the dataset. Since "THE TRAVEL AGENCY IN THE PARK" is not a person I removed it from the dataset. 
+
+There was one last record that needed to be removed and that was for "LOCKHART EUGENE E". This record was removed because all of its values were NaN.
 
 ![Original Plot](https://github.com/hraasch12/IdentifyFraudFromEnronEmail/blob/master/Bonus_Salary_Plot.PNG)
 
-Once the outlier was removed we have a much better plot.
+Once the outliers were removed we have a much better plot.
 
 ![Plot Without Outlier](https://github.com/hraasch12/IdentifyFraudFromEnronEmail/blob/master/Bonus_Salary_Post_Plot.PNG)
 
